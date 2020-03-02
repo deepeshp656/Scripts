@@ -1,0 +1,39 @@
+<# 
+1. Copy script to C:\Users\Username\Desktop\working\scripts\computers.txt
+2. Create computers.txt
+3. Run PS script
+4. File Report-GetADComputer-yyyymmdd_time.txt will be created
+#>
+
+
+
+$domain=""
+$Servers = Get-Content 'C:\Users\dpate30\Desktop\working\scripts\computers.txt'
+$Report = "C:\Users\username\Desktop\working\scripts\description2.csv"
+$Reportdev = "C:\Users\username\Desktop\working\scripts\detailsdev" + $(get-date -f yyyyMMdd_HHmm) + ".csv"
+
+
+
+$WB.Save
+# $Property1 = "CN" 
+# $Property2 = "CanonicalName"
+# $Property3 = "sAMAccountname"
+# $property4 = "mail"
+
+
+foreach ($Server in $Servers)
+{
+
+ 
+	
+Try {   
+           	
+			Get-ADComputer -server $domain $Server -Properties * | Select Description,CanonicalName | Export-Csv $Report -Append -NoTypeInformation
+			
+	
+	}
+  Catch {
+			   #Get-ADComputer -server $domain  $Computer -Properties * | Select Description,CanonicalName | Export-Csv $Report -Append -NoTypeInformation 
+         }
+           
+  } 
