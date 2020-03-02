@@ -1,0 +1,8 @@
+GC C:\Users\dpate30\Documents\work\Server.txt | %{
+  If (Test-Connection $_ -Quiet -Count 2){
+  Write-Host "$_ is UP" -b Green
+  }
+  Else{
+  Write-Host "$_ is Down" -b Red
+  }
+} 
