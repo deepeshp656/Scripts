@@ -1,0 +1,31 @@
+ 
+ $servers = Read-Host "Enter the path to the server list file"
+ [int32]$Port=Read-Host "Enter the port"
+ [int32] $Timeout = 10000
+
+	 if($servers -ne $null) {
+        $ComputerName = Get-Content $servers
+
+      }
+     
+
+   
+    foreach($Computer in $ComputerName) {
+    Try {
+          $tcp = New-Object System.Net.Sockets.TcpClient
+          $connection = $tcp.BeginConnect($Computer, $Port, $null, $null)
+          $connection.AsyncWaitHandle.WaitOne($timeout,$false)  | Out-Null 
+          if($tcp.Connected -eq $true) {
+          Write-Host  "Telnet to Host: `"$Computer`" on Port: `"$Port`"  Passed" -ForegroundColor Green
+      }
+      else {
+        Write-Host "Telnet to Host: `"$Computer`" on Port: `"$Port`"  Failed" -ForegroundColor Red
+      }
+    }
+    
+    Catch {
+            Write-Host "Unknown Error" -ForegroundColor Red
+          }
+
+       }
+    
