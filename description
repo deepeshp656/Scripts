@@ -1,0 +1,61 @@
+$domain
+
+$Servers = Get-Content 'C:\Users\username\Desktop\working\scripts\computers.txt'
+$Report = "path"
+$Reportdev = "path" + $(get-date -f yyyyMMdd_HHmm) + ".csv"
+
+
+
+$WB.Save
+# $Property1 = "CN" 
+# $Property2 = "CanonicalName"
+# $Property3 = "sAMAccountname"
+# $property4 = "mail"
+
+
+foreach ($Server in $Servers)
+{
+
+ 
+	
+Try {   
+
+		  
+		if(Get-ADComputer -server $domain $Server -Properties *) 
+			{
+          	Write-Host "Processing $Server  Writing info in file ..." -ForegroundColor Green
+			Get-ADComputer -server $domain $Server -Properties * | select CN, lastlogondate, CanonicalName | Export-Csv $Report -Append -NoTypeInformation 
+			}
+		
+
+
+	}
+  Catch {
+			   # Write-Host "Error not in domain..." -ForegroundColor Red
+         }
+           
+  } 
+
+
+
+foreach ($Server in $Servers)
+{
+
+   
+	
+Try {   
+
+		  
+		if(Get-ADComputer -server $domain $Server -Properties *) 
+			{
+          	Write-Host "Processing $Server  Writing info in file ..." -ForegroundColor Green
+			Get-ADComputer -server $domain $Server -Properties * | select CN, lastlogondate, CanonicalName | Export-Csv $Reportdev -Append -NoTypeInformation 
+			}
+		
+
+	}
+  Catch {
+			  #  Write-Host "Error not in domain..." -ForegroundColor Red
+         }
+           
+  } 
