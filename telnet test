@@ -1,0 +1,26 @@
+ $Port=3389
+ 
+ $ComputerName=""
+ 
+ 
+ foreach($Computer in $ComputerName) {
+    Try {
+          $tcp = New-Object System.Net.Sockets.TcpClient
+          $connection = $tcp.BeginConnect($Computer, $Port, $null, $null)
+          $connection.AsyncWaitHandle.WaitOne(1000,$false)  | Out-Null 
+          if($tcp.Connected -eq $true) {
+          Write-Host  "Successfully connected to Host: `"$Computer`" on Port: `"$Port`"" -ForegroundColor Green
+      }
+      else {
+        Write-Host "Could not connect to Host: `"$Computer `" on Port: `"$Port`"" -ForegroundColor Red
+      }
+    }
+    
+    Catch {
+            Write-Host "Unknown Error" -ForegroundColor Red
+          }
+
+       }
+	   
+	   
+
