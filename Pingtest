@@ -1,5 +1,8 @@
 #test of git repo
+<<<<<<< HEAD
 
+=======
+>>>>>>> c83176e4320f207595cb38f898a21c46b1cd0d4f
 
 GC C:\Users\dpate30\Documents\work\Server.txt | %{
   If (Test-Connection $_ -Quiet -Count 2){
