@@ -1,4 +1,4 @@
-#test of git
+#test of git repo
 
 GC C:\Users\dpate30\Documents\work\Server.txt | %{
   If (Test-Connection $_ -Quiet -Count 2){
