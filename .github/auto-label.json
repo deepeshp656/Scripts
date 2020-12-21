@@ -1,6 +1,6 @@
 {
   "rules": {
-    "frontend": ["*.txt", "*.css", "*.html"],
+    "auto-run": ["*.txt", "*.css", "*.html"],
     "backend": ["app/", "*.rb"],
     "ci": ".circleci"
   }
