@@ -2,4 +2,4 @@ frontend: ["*.js", "*.css", "*.html","*.txt"]
 backend: ["/app", "*.rb"]
 legal: ["LICENSE*", "NOTICES*"]
 config: .github
-auto-run: *
+
