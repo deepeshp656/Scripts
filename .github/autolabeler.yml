@@ -1,5 +1,5 @@
-auto-run: ["*.js", "*.css", "*.html","*.txt"]
-backend: ["/app", "*.rb"]
+auto-run: ["*.js", "*.css", "*.html"]
+backend: ["/app", "*.rb","testlabel.txt"]
 legal: ["LICENSE*", "NOTICES*"]
 config: .github
 
