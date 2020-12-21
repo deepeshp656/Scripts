@@ -1,4 +1,4 @@
-frontend: ["*.js", "*.css", "*.html"]
+frontend: ["*.js", "*.css", "*.html","*.txt"]
 backend: ["/app", "*.rb"]
 legal: ["LICENSE*", "NOTICES*"]
 config: .github
