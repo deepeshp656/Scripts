@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "auto-run": ["*.txt", "*.css", "*.html"],
+    "backend": ["app/", "*.rb"],
+    "ci": ".circleci"
+  }
+}
